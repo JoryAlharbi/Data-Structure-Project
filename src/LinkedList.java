@@ -18,17 +18,7 @@ public class LinkedList<T> {
         else
             return false;
     }
-   
-    //Not needed rn 
-    
-    public void insertFirst(int data){
-        
-        Node temp = new Node (data); 
-        
-        temp.next =head ;
-        head=temp ;
-        
-    } 
+
     
     public boolean Full(){
         return false ; //linked list is never full
