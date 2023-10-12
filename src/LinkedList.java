@@ -69,7 +69,10 @@ public class LinkedList<T> {
     }
             
             
-            
+          void FindFirst() {
+       current = head ;
+    }
+         
     
 }
 
