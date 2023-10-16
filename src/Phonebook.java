@@ -1,10 +1,16 @@
 package com.mycompany.ds;
 
+import java.util.Objects;
+
 public class Phonebook{
-  LinkedList<Contacts> L1= new LinkedList<>();
+  LinkedList<Contacts> Contact= new LinkedList<>();
+  
+  //search for event
+  
   //add:
   public void add(Contacts c){
-      
+      //add event
+      //add contact
   }
   
     // delete:
@@ -17,43 +23,43 @@ public class Phonebook{
   public LinkedList<Contacts> search(String n, int type){
     LinkedList<Contacts> Lsearch= new LinkedList<>(); 
     //if empty 
-    if(L1.isEmpty())
+    if(Contact.isEmpty())
         return Lsearch;
     
     //while (for retrive all contacts if there)
-    while(L1.Last()){
-        L1.FindFirst();
+    while(Contact.Last()){
+        Contact.FindFirst();
         
         switch(type){ //name, phoneNum, emailAddress, birthday, address, notes
             
             case 1: //Search by name
-             if(L1.Retrive().getName().equals(n))
-               Lsearch.Insert(L1.Retrive());
-             Lsearch.Insert(L1.Retrive()); //??
+             if(Contact.Retrive().getName().equals(n))
+               Lsearch.Insert(Contact.Retrive());
+             Lsearch.Insert(Contact.Retrive()); //??
              break;
              
             case 2: //Search by Phone 
-              if(L1.Retrive().getPhoneNum().equals(n))  
-           Lsearch.Insert(L1.Retrive());
-             Lsearch.Insert(L1.Retrive());
+              if(Contact.Retrive().getPhoneNum().equals(n))  
+           Lsearch.Insert(Contact.Retrive());
+             Lsearch.Insert(Contact.Retrive());
              break;
              
             case 3: //Search by eamil
-              if(L1.Retrive().getEmail().equals(n))  
-           Lsearch.Insert(L1.Retrive());
-             Lsearch.Insert(L1.Retrive());
+              if(Contact.Retrive().getEmail().equals(n))  
+           Lsearch.Insert(Contact.Retrive());
+             Lsearch.Insert(Contact.Retrive());
              break;  
             
              case 4: //Search by birthday
-              if(L1.Retrive().getBirthday().equals(n))  
-           Lsearch.Insert(L1.Retrive());
-             Lsearch.Insert(L1.Retrive());
+              if(Contact.Retrive().getBirthday().equals(n))  
+           Lsearch.Insert(Contact.Retrive());
+             Lsearch.Insert(Contact.Retrive());
              break;
              
              case 5: //Search by address
-              if(L1.Retrive().getAddress().equals(n))  
-           Lsearch.Insert(L1.Retrive());
-             Lsearch.Insert(L1.Retrive());
+              if(Contact.Retrive().getAddress().equals(n))  
+           Lsearch.Insert(Contact.Retrive());
+             Lsearch.Insert(Contact.Retrive());
              break;     
              
         }
@@ -61,6 +67,22 @@ public class Phonebook{
    return Lsearch;
   }
   
+     
+ public void printallContacts(){
+    if(Contact.isEmpty()) 
+        System.out.println("Phonebook is empthy!");   
+        
+    else{
+        System.out.println("Contacts in Phonebook: "); 
+        //for(){
+           System.out.println(Contact); //?
+            }
+            
+        }
+    }
+ 
+  
+  //????????????????????????????????????????????
   /*
   public LinkedList<Contacts> searchBy_phoneNum(String P){
       //
@@ -101,5 +123,3 @@ public LinkedList<Contacts> searchBy_email(String e){
   }
   
  */
-  
-}
