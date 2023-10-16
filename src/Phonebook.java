@@ -21,6 +21,12 @@ public class Phonebook{
            Contacts p =L1.Retrive() ; //a pointer to go through the list 
            
            while (!L1.Last()){
+             
+              // must ensure that the contact is unique before adding
+               if (p.getName().equals(c.getName()) || p.getPhoneNum().equals(c.getPhoneNum())){
+                   added = false ;
+                   break ;
+               }
                //case 2 : adding a contact with the smaller letter
                if (p.getName().compareTo(c.getName())== -1){
                    L1.Insert(c) ;
