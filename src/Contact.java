@@ -1,9 +1,10 @@
-public class Contacts implements Comparable {
+package com.mycompany.ds;
 
-private String name, phoneNum, emailAddress, birthday, address, notes; // private or public ?
+public class Contacts<T> implements Comparable {
+
+private String name, phoneNum, emailAddress, birthday, address, notes; 
 
 
-// constructor for only name and number
 public Contacts ( String name, String pnum, String email, String birthday, String address, String notes) { //copy and default constructors ??
 
 this.name = name;
@@ -12,9 +13,34 @@ emailAddress = email;
 this.birthday = birthday;
 this.address = address;
 this.notes = notes;  
-
 }
 
+// string or object
+public int compareTo(String n){ // how to write the code to compare names
+    int compareTo = name.compareTo(n);
+    
+    return compareTo;
+}
+/* -1 = name < n
+0 = equals 
+1 = name > n
+*/
+
+    @Override
+    public int compareTo(Object o) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+    
+    public void searchContact(String search){
+        boolean found=false;
+        //if() found= true;
+        
+        if(!found){
+            System.out.println("Sorry! ,no contacts found for: "+ search);    
+        }
+    }
+    
+    
 public void setName ( String n ) {
 
 name = n;
@@ -50,7 +76,7 @@ public void setNotes ( String n ) {
 notes = n;
 
 }
-/* display, tostring, getteers 
+// display, tostring, getteers 
 public String getName () {
 
 return name;
@@ -86,36 +112,5 @@ public String getNotes () {
 return notes;
 
 }
-*/
-
-// string or object
-public int compareTo(String n){ // how to write the code to compare names 
-
-name.compareTo(n);
-
-}
-/* -1 = name < n
-0 = equals 
-1 = name > n
-*/
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 }
