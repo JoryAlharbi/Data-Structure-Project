@@ -7,6 +7,9 @@ public class Event {
     private String location;
     private Contacts<T> contact;
 
+    
+public LinkedList<Event> eventList = new LinkedList<Event> ();
+
     public Event(String title, String date, String time, String location, Contacts contact) {
         this.title = title;
         this.date = date;
