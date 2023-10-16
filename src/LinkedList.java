@@ -1,4 +1,3 @@
-
 package com.mycompany.ds;
 
 public class LinkedList<T> {
@@ -7,18 +6,27 @@ public class LinkedList<T> {
     private Node<T> current ; 
     
     public LinkedList() {
-        head = null ; 
+        head =current= null ; 
     }
     
     // the basic methods 
-    
     public boolean isEmpty(){
-        if (head==null)
+        if(head==null)
             return true ; 
         else
             return false;
     }
-
+   
+    /*
+    //Not needed rn 
+    public void insertFirst(int data){
+        
+        Node temp = new Node (data); 
+        
+        temp.next =head ;
+        head=temp ;  
+    }
+    */ 
     
     public boolean Full(){
         return false ; //linked list is never full
@@ -28,8 +36,7 @@ public class LinkedList<T> {
         if (current.next==null)
             return true ; 
         else
-            return false ;
-        
+            return false ;        
     }
     
     public void FindNext(){
@@ -67,24 +74,6 @@ public class LinkedList<T> {
     public void Remove(){
         
     }
-            
-            
-          void FindFirst() {
-       current = head ;
-    }
-         
+                                 
     
 }
-
-    //Not needed rn 
-    
-   /* public void insertFirst(int data){
-        
-        Node temp = new Node (data); 
-        
-        temp.next =head ;
-        head=temp ;
-        
-    } */
-    
-  
