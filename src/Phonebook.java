@@ -3,15 +3,45 @@ package com.mycompany.ds;
 import java.util.Objects;
 
 public class Phonebook{
-  LinkedList<Contacts> Contact= new LinkedList<>();
   
-  //search for event
+     LinkedList<Contacts> L1= new LinkedList<>();
   
-  //add:
-  public void add(Contacts c){
-      //add event
-      //add contact
-  }
+     public boolean AddContact(Contacts c) {
+       
+           boolean added = false ; 
+           
+           //case 1 : empty list
+           
+           if (L1.isEmpty()){
+              L1.Insert(c);
+              added=true ; 
+           } 
+           
+            L1.FindFirst(); 
+           Contacts p =L1.Retrive() ; //a pointer to go through the list 
+           
+           while (!L1.Last()){
+               //case 2 : adding a contact with the smaller letter
+               if (p.getName().compareTo(c.getName())== -1){
+                   L1.Insert(c) ;
+                   added= true ;
+               }
+               //case 3 : adding a contact with the same or greater  
+                 if (p.getName().compareTo(c.getName())== 1 ||p.getName().compareTo(c.getName())==0 ){
+                    L1.FindNext(); 
+                    L1.Insert(c) ;
+                    added= true ;
+               }
+               
+               else
+                   L1.FindNext(); 
+                 p=L1.Retrive();
+               
+           }
+           
+          return added ;
+       
+       }
   
     // delete:
   public void delete(Contacts c){
