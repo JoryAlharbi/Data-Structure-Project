@@ -5,10 +5,10 @@ public class Event {
     private String date;
     private String time;
     private String location;
-    private Contacts<T> contact;
+    private Contacts contact;
 
-    
 public LinkedList<Event> eventList = new LinkedList<Event> ();
+public LinkedList<Contacts> event_ContactsList = new LinkedList<Contacts> ();
 
     public Event(String title, String date, String time, String location, Contacts contact) {
         this.title = title;
