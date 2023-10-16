@@ -1,32 +1,21 @@
-package com.mycompany.ds;
 
-public class LinkedList<T> {
-        
-    private Node<T> head ; 
-    private Node<T> current ; 
+public class LinkedList <T>{
+    
+    private Node <T> head ; 
+    private Node <T> current ; 
     
     public LinkedList() {
-        head =current= null ; 
+        head= current = null ; 
     }
     
     // the basic methods 
+    
     public boolean isEmpty(){
-        if(head==null)
+        if (head==null)
             return true ; 
         else
             return false;
     }
-   
-    /*
-    //Not needed rn 
-    public void insertFirst(int data){
-        
-        Node temp = new Node (data); 
-        
-        temp.next =head ;
-        head=temp ;  
-    }
-    */ 
     
     public boolean Full(){
         return false ; //linked list is never full
@@ -36,15 +25,12 @@ public class LinkedList<T> {
         if (current.next==null)
             return true ; 
         else
-            return false ;        
+            return false ;
+        
     }
     
     public void FindNext(){
         current=current.next ;
-    }
-    
-    public void FindFirst(){
-        current=head ;
     }
     
     public void Update(T d){
@@ -55,8 +41,39 @@ public class LinkedList<T> {
         return current.Data;
     }
     
+    
+   public void FindFirst() {
+       current = head ;
+       
+    }
+   
+    public void Remove(){
+        
+        if (current==head)
+        {
+            head= head.next ; 
+            current=current.next ;
+        }
+        
+        else {
+            
+            Node <T> p = head ;
+            while (p.next != current)
+                p=p.next ;
+            
+            p.next = current.next ;
+        }
+        
+         if (current.next != null)
+            current = current.next ;
+        else
+            current=head ;
+        
+       
+    }
+
     public void Insert(T data){
-        Node <T> temp=new Node<T> (data); 
+        Node <T> temp=new Node <T> (data); 
         
         if (head==null){
             head=temp ; 
@@ -70,10 +87,5 @@ public class LinkedList<T> {
         }
         
     }
-    
-    public void Remove(){
-        
-    }
-                                 
-    
+            
 }
