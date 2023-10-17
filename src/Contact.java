@@ -3,7 +3,7 @@ package com.mycompany.ds;
 public class Contacts<T> implements Comparable {
 
 private String name, phoneNum, emailAddress, birthday, address, notes; 
-
+public LinkedList<Event> contactEvents = new LinkedList<Event> (); // to store all events for a contact object
 
 public Contacts ( String name, String pnum, String email, String birthday, String address, String notes) { //copy and default constructors ??
 
