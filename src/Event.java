@@ -2,7 +2,7 @@ public class Event implements Comparable<Event> {
     private String title;
     private String timeAndDate;
     private String location;
-    private String name ;
+    private String contactName ;
     
 
     public Event(String title, String TimeAndDate, String location, String name) {
