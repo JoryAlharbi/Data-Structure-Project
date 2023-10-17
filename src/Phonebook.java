@@ -94,13 +94,40 @@ public class PhoneBook  {
  
            }
            
-        
-        
     // delete:
-  public void delete(Contacts c){
-      //public void delete(String name)
+  public void delete( String ContactName){
+      //for the massege 
+      boolean msgC= false;
+
+      contactList.FindFirst();
+      while(contactList.Last()){
+          if(contactList.Retrive().getName().equals(ContactName)){
+              contactList.Remove(contactList.retrive());
+              msgC= true;
+          }
+          else{
+              contactList.FindNext();   
+          }
+      }
       
-  }
+      if(msgC){
+          //check if there an event with this contact to delete it:
+      event_ContactsList.FindFirst();
+      while(event_ContactsList.Last()){
+          if(event_ContactsList.Retrive().getContactName().equals(ContactName)){
+           event_ContactsList.Remove(event_ContactsList.Retrive());     
+          } 
+          else
+              event_ContactsList.FindNext();
+      }
+      }
+      
+      //System.out.println("Contact not found to be delete it");   
+      
+      if(msgC) 
+          System.out.println("Contact with" + ContactName + "name is deleted successfuly , as well as all their related events if there is any");
+  }     
+        
   
    //search: 
   public LinkedList<Contacts> search(String n, int type){
