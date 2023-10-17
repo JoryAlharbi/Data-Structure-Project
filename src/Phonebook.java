@@ -2,31 +2,73 @@ package com.mycompany.ds;
 
 import java.util.Objects;
 
-public class Phonebook{
-  
-     LinkedList<Contacts> L1= new LinkedList<>();
-  
-     public boolean AddContact(Contacts c) {
-       
+public class PhoneBook  {
+    
+     LinkedList<Contacts> contactList= new LinkedList<>();
+     LinkedList<Event> event_ContactsList = new LinkedList<Event> () ;
+       public boolean AddContact(Contacts c) {
            boolean added = false ; 
            
            //case 1 : empty list
            
-           if (L1.isEmpty()){
-              L1.Insert(c);
+           if (contactList.isEmpty()){
+              contactList.Insert(c);
               added=true ; 
            } 
            
-            L1.FindFirst(); 
-           Contacts p =L1.Retrive() ; //a pointer to go through the list 
+            contactList.FindFirst(); 
+           Contacts p =contactList.Retrive() ; //a pointer to go through the list 
            
-           while (!L1.Last()){
-             
-              // must ensure that the contact is unique before adding
+           while (!contactList.Last()){
+               // must insure that the contact is unique before adding
                if (p.getName().equals(c.getName()) || p.getPhoneNum().equals(c.getPhoneNum())){
                    added = false ;
                    break ;
                }
+                   
+               //case 2 : adding a contact with the smaller letter
+               if (p.getName().compareTo(c.getName())== -1){
+                   contactList.Insert(c) ;
+                   added= true ;
+               }
+               //case 3 : adding a contact with the same or greater  
+                 if (p.getName().compareTo(c.getName())== 1 ||p.getName().compareTo(c.getName())==0 ){
+                    contactList.FindNext(); 
+                    contactList.Insert(c) ;
+                    added= true ;
+               }
+               
+               else
+                   contactList.FindNext(); 
+                 p=contactList.Retrive();
+               
+           }
+           
+          return added ;
+       
+       }
+       //////// adding an event 
+       /*
+ public boolean AddEvent(Event e) {
+           boolean added = false ; 
+           
+           //case 1 : empty list
+           
+           if (event_ContactsList.isEmpty()){
+              event_ContactsList.Insert(e);
+              added=true ; 
+           } 
+           
+            event_ContactsList.FindFirst(); 
+           Event p =event_ContactsList.Retrive() ; //a pointer to go through the list 
+           /*
+           while (!L1.Last()){
+               // must insure that the contact is unique before adding
+               if (p.getName().equals(e.getName()) || p.getPhoneNum().equals(c.getPhoneNum())){
+                   added = false ;
+                   break ;
+               }
+                   
                //case 2 : adding a contact with the smaller letter
                if (p.getName().compareTo(c.getName())== -1){
                    L1.Insert(c) ;
@@ -46,56 +88,59 @@ public class Phonebook{
            }
            
           return added ;
+       */
        
-       }
-  
+
+
+        
+        
     // delete:
   public void delete(Contacts c){
       //public void delete(String name)
       
   }
   
-  //search: 
+   //search: 
   public LinkedList<Contacts> search(String n, int type){
     LinkedList<Contacts> Lsearch= new LinkedList<>(); 
     //if empty 
-    if(Contact.isEmpty())
+    if(contactList.isEmpty())
         return Lsearch;
     
     //while (for retrive all contacts if there)
-    while(Contact.Last()){
-        Contact.FindFirst();
+    while(contactList.Last()){
+        contactList.FindFirst();
         
         switch(type){ //name, phoneNum, emailAddress, birthday, address, notes
             
             case 1: //Search by name
-             if(Contact.Retrive().getName().equals(n))
-               Lsearch.Insert(Contact.Retrive());
-             Lsearch.Insert(Contact.Retrive()); //??
+             if(contactList.Retrive().getName().equals(n))
+               Lsearch.Insert(contactList.Retrive());
+             Lsearch.Insert(contactList.Retrive()); //??
              break;
              
             case 2: //Search by Phone 
-              if(Contact.Retrive().getPhoneNum().equals(n))  
-           Lsearch.Insert(Contact.Retrive());
-             Lsearch.Insert(Contact.Retrive());
+              if(contactList.Retrive().getPhoneNum().equals(n))  
+           Lsearch.Insert(contactList.Retrive());
+             Lsearch.Insert(contactList.Retrive());
              break;
              
             case 3: //Search by eamil
-              if(Contact.Retrive().getEmail().equals(n))  
-           Lsearch.Insert(Contact.Retrive());
-             Lsearch.Insert(Contact.Retrive());
+              if(contactList.Retrive().getEmail().equals(n))  
+           Lsearch.Insert(contactList.Retrive());
+             Lsearch.Insert(contactList.Retrive());
              break;  
             
              case 4: //Search by birthday
-              if(Contact.Retrive().getBirthday().equals(n))  
-           Lsearch.Insert(Contact.Retrive());
-             Lsearch.Insert(Contact.Retrive());
+              if(contactList.Retrive().getBirthday().equals(n))  
+           Lsearch.Insert(contactList.Retrive());
+             Lsearch.Insert(contactList.Retrive());
              break;
              
              case 5: //Search by address
-              if(Contact.Retrive().getAddress().equals(n))  
-           Lsearch.Insert(Contact.Retrive());
-             Lsearch.Insert(Contact.Retrive());
+              if(contactList.Retrive().getAddress().equals(n))  
+           Lsearch.Insert(contactList.Retrive());
+             Lsearch.Insert(contactList.Retrive());
              break;     
              
         }
@@ -103,59 +148,66 @@ public class Phonebook{
    return Lsearch;
   }
   
+  
+ public boolean searchEvent(String s){
+     boolean found=false ;
+     if (event_ContactsList.isEmpty())
+         found=false ;
+     else 
+     {
+         
+         
+         
+     }
      
- public void printallContacts(){
-    if(Contact.isEmpty()) 
-        System.out.println("Phonebook is empthy!");   
-        
-    else{
-        System.out.println("Contacts in Phonebook: "); 
-        //for(){
-           System.out.println(Contact); //?
-            }
-            
-        }
-    }
+     
+     
+     return found ;
+ }
+  
+  /* 
+ public void printallContacts(LinkedList <Contacts> L2){
+   
+     if(L2.isEmpty())
+         System.out.println("the phonebook is empty");
+     else{
+     L2.FindFirst(); 
+     
+     while(!L2.Last()){
+         
+       L2.Retrive().
+         System.out.println("-----------------------");
+         L1.FindNext(); 
+     }//while
+     
+     L1.Retrive().display();
+     
+ }//else
+     
+ }
+*/
+    
+ public void printallContacts_ByFisrtName(){
+   
+     if(contactList.isEmpty())
+         System.out.println("the phonebook is empty");
+     
+     else{
+     contactList.FindFirst(); 
+     
+     while(!contactList.Last()){
+         
+      contactList.Retrive().getName();
+         System.out.println("-----------------------");
+         contactList.FindNext(); 
+     }//while
+     
+      contactList.Retrive().getName();     
+     }
+     
  
-  
-  //????????????????????????????????????????????
-  /*
-  public LinkedList<Contacts> searchBy_phoneNum(String P){
-      //
-    LinkedList<Contacts> Cname= new LinkedList<>(); 
-    //if empty 
-    if(L1.isEmpty())
-        return Cname;
-    
-    //while (for retrive all contacts if there)
-    while(L1.Last()){
-        L1.FindFirst();
-        if(L1.Retrive().getName().equals(p))
-            Cname.Insert(L1.Retrive());
-        
-        L1.FindNext();
-        
-    }
-   return Cname;
-  }
-  
-public LinkedList<Contacts> searchBy_email(String e){
-      //#####
-    LinkedList<Contacts> Cname= new LinkedList<>(); 
-    //if empty 
-    if(L1.isEmpty())
-        return Cname;
-    
-    //while (for retrive all contacts if there)
-    while(L1.Last()){
-        L1.FindFirst();
-        if(L1.Retrive().getName().equals(e))
-            Cname.Insert(L1.Retrive());
-        
-        L1.FindNext();
-        
-    }
-   return Cname;
-  }
-  
- */
+ }
+ // boolean method for adding an event but check for conflict
+ 
+
+}
