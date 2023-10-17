@@ -7,7 +7,7 @@ public class Phonebook  {
    public LinkedList<Contacts> contactList= new LinkedList<Contacts>();
     public  LinkedList<Event> event_ContactsList = new LinkedList<Event> () ;
      
-       public boolean AddContact(Contacts c) {
+       public void AddContact(Contacts c) {
            boolean added = false ; 
            
            //case 1 : empty list
@@ -44,12 +44,13 @@ public class Phonebook  {
                
            }
            
-          return added ;
+          if (added)
+               System.out.println("Contact not added");
        
        }
        
       
- public boolean AddEvent(Event e) {
+ public void AddEvent(Event e) {
      
            boolean added = false ; 
            
@@ -93,7 +94,9 @@ public class Phonebook  {
                  p=event_ContactsList.Retrive();
            }
                  
-                        return added ;
+                        if(added==false)
+                            System.out.println("Event not added");
+                        
  
            }
            
