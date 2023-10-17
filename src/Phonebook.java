@@ -149,20 +149,30 @@ public class PhoneBook  {
   }
   
   
- public boolean searchEvent(String s){
+ public boolean searchEvent(String s,int i){
      boolean found=false ;
      if (event_ContactsList.isEmpty())
          found=false ;
      else 
      {
-         
-         
-         
+         event_ContactsList.FindFirst(); 
+         Event p=event_ContactsList.Retrive() ;
+         switch (i){
+             case 1: // search by name
+                 if(p.getName().equals(s))
+                    found= true ;
+                 
+                 break; 
+                 
+             case 2: //search by title 
+                 if(p.getTitle().equals(s))
+                     found=true ;
+                 
+                 break;
+                     }
      }
-     
-     
-     
-     return found ;
+       return found ;
+
  }
   
   /* 
@@ -186,8 +196,7 @@ public class PhoneBook  {
      
  }
 */
-    
- public void printallContacts_ByFisrtName(){
+ public void printallContacts_ByFisrtName(String name){
    
      if(contactList.isEmpty())
          System.out.println("the phonebook is empty");
@@ -197,17 +206,18 @@ public class PhoneBook  {
      
      while(!contactList.Last()){
          
-      contactList.Retrive().getName();
+     if( contactList.Retrive().getName().equals(name))
+             contactList.Retrive().toString();
+     
          System.out.println("-----------------------");
          contactList.FindNext(); 
      }//while
      
-      contactList.Retrive().getName();     
+      contactList.Retrive().toString();
+
      }
      
  
  }
- // boolean method for adding an event but check for conflict
  
-
-}
+ 
