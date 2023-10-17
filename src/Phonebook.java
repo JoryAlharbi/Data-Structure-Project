@@ -1,393 +1,134 @@
-package com.mycompany.ds;
+package s.project1;
+import java.util.Scanner;
 
-import java.util.Objects;
 
-public class PhoneBook  {
+public class App {
+    public static void main(String[] args) {
+        
+    Scanner input = new Scanner (System.in);  // to read from the user
+    Phonebook phonebook = new Phonebook(); //created a new phonebook for the user 
+    int userChoice,  contactCriteria, eventCriteria;
     
-   public LinkedList<Contacts> contactList= new LinkedList<Contacts>();
-    public  LinkedList<Event> event_ContactsList = new LinkedList<Event> () ;
-     
-       public boolean AddContact(Contacts c) {
-           boolean added = false ; 
-           
-           //case 1 : empty list
-           
-           if (contactList.isEmpty()){
-              contactList.Insert(c);
-              added=true ; 
-           } 
-           
-            contactList.FindFirst(); 
-           Contacts p =contactList.Retrive() ; //a pointer to go through the list 
-           
-           while (!contactList.Last()){
-               // must insure that the contact is unique before adding
-               if (p.getName().equals(c.getName()) || p.getPhoneNum().equals(c.getPhoneNum())){
-                   added = false ;
-                   break ;
-               }
-                   
-               //case 2 : adding a contact with the smaller letter
-               if (p.getName().compareTo(c.getName())== -1){
-                   contactList.Insert(c) ;
-                   added= true ;
-               }
-               //case 3 : adding a contact with the same or greater  
-                 if (p.getName().compareTo(c.getName())== 1 ||p.getName().compareTo(c.getName())==0 ){
-                    contactList.FindNext(); 
-                    contactList.Insert(c) ;
-                    added= true ;
-               }
+    do {
+        // showing the menu for the user
+     System.out.println("Welcome to the Linked Tree Phonebook! \n Please choose an option:");  
+         System.out.println("1. Add a contact");  
+         System.out.println("2. Search for a contact");  
+         System.out.println("3. Delete a contact");  
+         System.out.println("4. Schedule an event");  
+         System.out.println("5. Print event details");  
+         System.out.println("6. Print contacts by first name");  
+         System.out.println("7. Print all events alphabetically");  
+         System.out.println("8. Exit");
+         System.out.print("Enter your choice:");
+  
+        userChoice = input.nextInt(); // user enter their choice 
+        
+        switch (userChoice) { // based on their choice, 'switch' will direct them to the right code
+            
+          case 1: // 1. user is asked to fill the new contact info
+              System.out.print("Enter the contact's name: ");
+              String name = input.nextLine(); // nextLine because of print
+              System.out.print("Enter the contact's phone number: ");
+              String phoneNumber = input.nextLine();
+              System.out.print("Enter the contact's email address: ");
+              String emailAddress = input.nextLine();
+              System.out.print("Enter the contact's address: ");
+              String address  = input.nextLine();
+              System.out.print("Enter the contact's birthday: ");
+              String birthday = input.nextLine();
+              System.out.print("Enter any notes for the contact: ");
+              String notes = input.nextLine();
+              
+              Contacts contact = new Contacts(name,phoneNumber,emailAddress,address,birthday,notes); // 2. create a new contact obj
+              
+             if ( phonebook.AddContact(contact) ) // sending the new obj to the 'add method'
+              System.out.println("Contact added successfully"); // the add method return true if the contact is added successfully
+             
+             break;
+              
+          case 2: // user choose what they want to base their search on 
+              System.out.println("Choose search critiria: ");
+              System.out.println("1. Name: ");
+              System.out.println("2. Phone Number: ");
+              System.out.println("3. Email Address: ");
+              System.out.println("4. Address: ");
+              System.out.println("5. Birthday: ");
+              
+              contactCriteria = input.nextInt(); // user choice 
+              
+           switch (contactCriteria) { // ask rawan about the return statement !!!!
                
-               else
-                   contactList.FindNext(); 
-                 p=contactList.Retrive();
-               
+               case 1:
+                   String searchName = input.nextLine();
+                   phonebook.search(searchName, contactCriteria);
+                   break;
+               case 2:
+                   String searchPhoneNum = input.nextLine();
+                   phonebook.search(searchPhoneNum, contactCriteria);
+                   break;
+               case 3: 
+                   String searchEmailAddress = input.nextLine();
+                   phonebook.search(searchEmailAddress, contactCriteria);
+                   break;
+               case 4:
+                   String searchAddress = input.nextLine();
+                   phonebook.search(searchAddress, contactCriteria);
+                   break;
+               case 5: 
+                   String searchBirthday = input.nextLine();
+                   phonebook.search(searchBirthday, contactCriteria);
+                   break;
            }
            
-          return added ;
-       
-       }
-       
-      
- public boolean AddEvent(Event e) {
-     
-           boolean added = false ; 
+           break; 
            
-           //case 1 : empty list
-           
-           if (event_ContactsList.isEmpty()){
-              event_ContactsList.Insert(e);
-              added=true ; 
-           } 
-           
-            event_ContactsList.FindFirst(); 
+          case 3:  
+            break;
+              
+          case 4: 
+            System.out.print("Enter event title: ");
+            String eventTitle = input.nextLine();
+             System.out.print("Enter contact name: ");
+            String contactName = input.nextLine();
+             System.out.print("Enter event date and time (MM/DD/YYYY): ");
+            String dateTime = input.nextLine();
+             System.out.print("Enter event location: ");
+            String eventLocation = input.nextLine();
+          
+            // then event added successfuly after sending to the add event method
             
-           Event p =event_ContactsList.Retrive() ; //a pointer to go through the list 
-           while (!event_ContactsList.Last()){
-               
-               // must ensure that the event is unique before adding
-               if (p.getTitle().equals(e.getTitle())){
-                   added = false ;
-                    break;
-               }
-               
-                   
-               //case 2 : adding a contact with the smaller letter
-               if (p.getName().compareTo(e.getName())== -1){
-                   event_ContactsList.Insert(e) ;
-                   added= true ;
-               }
-               //case 3 : adding a contact with the same or greater  
-                 if (p.getName().compareTo(e.getName())== 1 ||p.getName().compareTo(e.getName())==0 ){
-                    event_ContactsList.FindNext(); 
-                    event_ContactsList.Insert(e) ;
-                    added= true ;
-               }
-               
-               else
-                   event_ContactsList.FindNext(); 
-                 p=event_ContactsList.Retrive();
-           }
-                 
-                        return added ;
- 
-           }
-           
-      
-
-
-        
-        
-     public void delete( String ContactName){
-      //for the massege 
-      boolean msgC= false;
-
-      contactList.FindFirst();
-      while(contactList.Last()){
-          if(contactList.Retrive().getName().equals(ContactName)){
-              contactList.Remove();
-              msgC= true;
-          }
-          else{
-              contactList.FindNext();   
-          }
-      }
-      
-      if(msgC){
-          //check if there an event with this contact to delete it:
-      event_ContactsList.FindFirst();
-      while(event_ContactsList.Last()){
-          if(event_ContactsList.Retrive().getName().equals(ContactName)){
-           event_ContactsList.Remove();     
-          } 
-          else
-              event_ContactsList.FindNext();
-      }
-      } 
-      
-      if(msgC) 
-          System.out.println("Contact with" + ContactName + "name is deleted successfuly , as well as all their related events if there is any");
-      else
-          System.out.println("there is no" + ContactName + "Contact to delete");    
-      
-  }    
-  
-      
-  
-  
-   //search: 
-  public boolean search(String n, int type){
-    LinkedList<Contacts> Lsearch= new LinkedList<>(); 
-    boolean found = false ;
-    //if empty 
-    if(contactList.isEmpty())
-        found = false ;
-    
-            contactList.FindFirst();
-
-    //while (for retrive all contacts if there)
-    while(!contactList.Last()){  
-        
-        switch(type){ //name, phoneNum, emailAddress, birthday, address, notes
+            break; 
+          case 5:  
+            System.out.println("Enter search criteria: \n 1.Contact name \n 2. Event title ");
+            eventCriteria = input.nextInt();
             
-            case 1: //Search by name
-             if(contactList.Retrive().getName().equals(n))
-               Lsearch.Insert(contactList.Retrive());
-             Lsearch.Insert(contactList.Retrive()); 
-             found = true ;
-             break;
-             
-            case 2: //Search by Phone 
-              if(contactList.Retrive().getPhoneNum().equals(n))  
-           Lsearch.Insert(contactList.Retrive());
-             Lsearch.Insert(contactList.Retrive());
-             found = true ;
-
-             break;
-             
-            case 3: //Search by eamil
-              if(contactList.Retrive().getEmail().equals(n))  
-           Lsearch.Insert(contactList.Retrive());
-             Lsearch.Insert(contactList.Retrive());
-             found=true;
-             break;  
             
-             case 4: //Search by birthday
-              if(contactList.Retrive().getBirthday().equals(n))  
-           Lsearch.Insert(contactList.Retrive());
-             Lsearch.Insert(contactList.Retrive());
-             found=true ;
-             break;
-             
-             case 5: //Search by address
-              if(contactList.Retrive().getAddress().equals(n))  
-           Lsearch.Insert(contactList.Retrive());
-             Lsearch.Insert(contactList.Retrive());
-             found=true ;
-             break;     
-             
-             
+            
+            break;
+              
+          case 6: 
+              System.out.print("Enter the first name: ");
+              String firstName = input.nextLine();
+                 phonebook.printallContacts_ByFisrtName(); // wrong because first name supposed to receive the first name
+                      
+          case 7: 
+              phonebook.printallContacts_ByFisrtName();
+       break;
+            
+            
         }
         
-        contactList.FindNext();
-    }//end while
+        
+                 System.out.print("Enter your choice:");
+                 userChoice = input.nextInt();
+        
+        
+    } while (userChoice != 8);
     
-      switch(type){ // this switch to check the last element in the list
-            
-            case 1: //Search by name
-             if(contactList.Retrive().getName().equals(n))
-               Lsearch.Insert(contactList.Retrive());
-             Lsearch.Insert(contactList.Retrive()); 
-             found = true ;
-             break;
-             
-            case 2: //Search by Phone 
-              if(contactList.Retrive().getPhoneNum().equals(n))  
-           Lsearch.Insert(contactList.Retrive());
-             Lsearch.Insert(contactList.Retrive());
-             found = true ;
-
-             break;
-             
-            case 3: //Search by eamil
-              if(contactList.Retrive().getEmail().equals(n))  
-           Lsearch.Insert(contactList.Retrive());
-             Lsearch.Insert(contactList.Retrive());
-             found=true;
-             break;  
-            
-             case 4: //Search by birthday
-              if(contactList.Retrive().getBirthday().equals(n))  
-           Lsearch.Insert(contactList.Retrive());
-             Lsearch.Insert(contactList.Retrive());
-             found=true ;
-             break;
-             
-             case 5: //Search by address
-              if(contactList.Retrive().getAddress().equals(n))  
-           Lsearch.Insert(contactList.Retrive());
-             Lsearch.Insert(contactList.Retrive());
-             found=true ;
-             break;     
-             
-   }
-    PrintContact(Lsearch);
-    return found;
-
-  }
-  
-  // in the main if (!searchEvent(event)) sop "not found" 
-  
- public boolean searchEvent(String s,int i){
-     LinkedList<Event> EventSearchList = new LinkedList<Event>() ;
-     
-     boolean found=false ;
-     if (event_ContactsList.isEmpty())
-         found=false ;
-     
-        Event p = null ;
-     
-         event_ContactsList.FindFirst(); 
-         
-         while(!event_ContactsList.Last()){
-         p=event_ContactsList.Retrive() ;
-         
-         switch (i){
-             case 1: // search by name
-                 if(p.getName().equals(s))
-                    found= true ;
-                 EventSearchList.Insert(p);
-                 
-                 break; 
-                 
-             case 2: //search by title 
-                 if(p.getTitle().equals(s))
-                     found=true ;
-                     EventSearchList.Insert(p);
-
-                 
-                 break;
-                     }//end switch
-         
-         event_ContactsList.FindNext(); 
-         }
-         
-         // this switch to check the last element in the list 
-         
-         switch (i){
-             case 1: // search by name
-                 if(p.getName().equals(s))
-                    found= true ;
-                 EventSearchList.Insert(p);
-                 
-                 break; 
-                 
-             case 2: //search by title 
-                 if(p.getTitle().equals(s))
-                     found=true ;
-                     EventSearchList.Insert(p);
-
-                 
-                 break;
-                     }//end switch
-         
-     
-        PrintEvent(EventSearchList);
-       return found ;
-
- }
     
- public void printallContacts_ByFisrtName(String name){
-   
-     if(contactList.isEmpty())
-         System.out.println("the phonebook is empty");
-     
-     else{
-     contactList.FindFirst(); 
-     
-     while(!contactList.Last()){
-         
-     if( contactList.Retrive().getName().equals(name))
-             contactList.Retrive().toString();
-     
-         System.out.println("-----------------------");
-         contactList.FindNext(); 
-     }//while
-     
-      contactList.Retrive().toString();
-
-     }
- }
-     //PRINT ALL EVENTS 
-     public void PrintEvent(){
-   
-     if(event_ContactsList.isEmpty())
-         System.out.println("the event list is empty");
-     
-     else{
-     event_ContactsList.FindFirst(); 
-     
-     while(!event_ContactsList.Last()){
     
-             event_ContactsList.Retrive().toString();
-     
-         System.out.println("-----------------------");
-         event_ContactsList.FindNext(); 
-     }//while
-     
-      event_ContactsList.Retrive().toString();
-
-     }
-     
- 
- }
-  //this method is for printing a list we recive from the search in the event list 
-     
-     public void PrintEvent(LinkedList<Event> EventSearchList){
-   
-     if(EventSearchList.isEmpty())
-         System.out.println("the event list is empty");
-     
-     else{
-     EventSearchList.FindFirst(); 
-     
-     while(!EventSearchList.Last()){
-    
-             EventSearchList.Retrive().toString();
-     
-         System.out.println("-----------------------");
-         EventSearchList.FindNext(); 
-     }//while
-     
-      EventSearchList.Retrive().toString();
-
-     }
-     }
-     
-  //this method is for printing a list we recive from the search in the contact list 
-     
-     public void PrintContact(LinkedList<Contacts> contactSearchList){
-   
-     if(contactSearchList.isEmpty())
-         System.out.println("the event list is empty");
-     
-     else{
-     contactSearchList.FindFirst(); 
-     
-     while(!contactSearchList.Last()){
-    
-             contactSearchList.Retrive().toString();
-     
-         System.out.println("-----------------------");
-         contactSearchList.FindNext(); 
-     }//while
-     
-      contactSearchList.Retrive().toString();
-
-     }
- 
- }
-
-}//end class phonebook
- 
+        
+        
+    }
+}
