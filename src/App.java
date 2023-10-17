@@ -81,8 +81,10 @@ public class App {
                    break;
            }
            
+           break; 
+           
           case 3:  
-            
+            break;
               
           case 4: 
             System.out.print("Enter event title: ");
@@ -96,20 +98,24 @@ public class App {
           
             // then event added successfuly after sending to the add event method
             
-            
+            break; 
           case 5:  
             System.out.println("Enter search criteria: \n 1.Contact name \n 2. Event title ");
             eventCriteria = input.nextInt();
+            
+            
+            
+            break;
               
           case 6: 
-              
-          case 7:  
-          
+              System.out.print("Enter the first name: ");
+              String firstName = input.nextLine();
+                 phonebook.printallContacts_ByFisrtName(); // wrong because first name supposed to receive the first name
+                      
+          case 7: 
+              phonebook.printallContacts_ByFisrtName();
           case 8: break;
         
-            
-            
-            
             
             
         }
