@@ -9,10 +9,11 @@ public class Event {
     // need a display for all events
     public LinkedList<Contacts> event_ContactsList = new LinkedList<Contacts> ();
 
-    public Event(String title, String TimeAndDate, String location, Contacts contact) {
+    public Event(String title, String TimeAndDate, String location, String name; Contacts contact) {
         this.title = title;
         this.timeAndDate= TimeAndDate;
         this.location = location;
+        this.name = name;
         this.contact = contact;
     }
     
