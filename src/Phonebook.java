@@ -122,10 +122,10 @@ public class PhoneBook  {
       }
       }
       
-      //System.out.println("Contact not found to be delete it");   
-      
       if(msgC) 
           System.out.println("Contact with" + ContactName + "name is deleted successfuly , as well as all their related events if there is any");
+      else
+          System.out.println("there is no" + ContactName + "Contact to delete");
   }     
         
   
