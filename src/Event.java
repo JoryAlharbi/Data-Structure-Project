@@ -1,19 +1,16 @@
-package com.mycompany.ds;
-
 public class Event {
     private String title;
-    private String date;
-    private String time;
+    private String timeAndDate;
     private String location;
     private Contacts contact;
+    
+    public LinkedList<Event> eventList = new LinkedList<Event> ();
+    // need a display for all events
+    public LinkedList<Contacts> event_ContactsList = new LinkedList<Contacts> ();
 
-public LinkedList<Event> eventList = new LinkedList<Event> ();
-public LinkedList<Contacts> event_ContactsList = new LinkedList<Contacts> ();
-
-    public Event(String title, String date, String time, String location, Contacts contact) {
+    public Event(String title, String TimeAndDate, String location, Contacts contact) {
         this.title = title;
-        this.date = date;
-        this.time = time;
+        this.timeAndDate= TimeAndDate;
         this.location = location;
         this.contact = contact;
     }
@@ -22,13 +19,6 @@ public LinkedList<Contacts> event_ContactsList = new LinkedList<Contacts> ();
 this.title = title;
   }
 
- public  void setDate ( String date) {
-this.date = date;
-  }
-
- public  void setTime ( String time) {
-this.time = time;
-  }
 
  public  void setLocation ( String location) {
 this.location = location;
@@ -40,29 +30,31 @@ return title ;
 
 }
 
-public String getDate () {
-
-return date ;
-
-}
-
-public String getTime () {
-
-return time ;
-
-}
-
 public String getLocation() {
 
 return location ;
 
 }
-    
-    /* ??????????Chatgpt:
-    public boolean equals(Object o){
-        
-        return true;
+
+    public void setTimeAndDate(String timeAndDate) {
+        this.timeAndDate = timeAndDate;
     }
-    */
+
+    public String getTimeAndDate() {
+        return timeAndDate;
+    }
+
+    
+    
+    public LinkedList<Event> getEventList() {
+        return eventList;
+    }
+
+    
+    public LinkedList<Contacts> getEvent_ContactsList() {
+        return event_ContactsList;
+    }
+
    
 }
+    
