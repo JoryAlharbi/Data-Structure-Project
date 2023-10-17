@@ -2,7 +2,6 @@
 package ds.project;
 
 
-
 public class Phonebook  {
     
    public LinkedList<Contacts> contactList= new LinkedList<Contacts>();
