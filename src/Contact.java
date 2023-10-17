@@ -1,10 +1,14 @@
-package com.mycompany.ds;
 
-public class Contacts<T> implements Comparable {
+package ds.project;
 
-private String name, phoneNum, emailAddress, birthday, address, notes; 
-public LinkedList<Event> contactEvents = new LinkedList<Event> (); // to store all events for a contact object
+public class Contacts implements Comparable<Contacts>{
+    
+    
+private String name, phoneNum, emailAddress, birthday, address, notes; // private or public ?
 
+public LinkedList <Event> ContactEvent = new LinkedList<Event>() ;
+
+// constructor for only name and number
 public Contacts ( String name, String pnum, String email, String birthday, String address, String notes) { //copy and default constructors ??
 
 this.name = name;
@@ -12,35 +16,10 @@ phoneNum = pnum;
 emailAddress = email; 
 this.birthday = birthday;
 this.address = address;
-this.notes = notes;  
+this.notes = notes; 
+
 }
 
-// string or object
-public int compareTo(String n){ // how to write the code to compare names
-    int compareTo = name.compareTo(n);
-    
-    return compareTo;
-}
-/* -1 = name < n
-0 = equals 
-1 = name > n
-*/
-
-    @Override
-    public int compareTo(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-    
-    public void searchContact(String search){
-        boolean found=false;
-        //if() found= true;
-        
-        if(!found){
-            System.out.println("Sorry! ,no contacts found for: "+ search);    
-        }
-    }
-    
-    
 public void setName ( String n ) {
 
 name = n;
@@ -76,7 +55,7 @@ public void setNotes ( String n ) {
 notes = n;
 
 }
-// display, tostring, getteers 
+  
 public String getName () {
 
 return name;
@@ -112,5 +91,22 @@ public String getNotes () {
 return notes;
 
 }
+
+
+    @Override
+    public String toString() {
+        return "Contacts{" + "name=" + name + ", phoneNum=" + phoneNum + ", emailAddress=" + emailAddress + ", birthday=" + birthday + ", address=" + address + ", notes=" + notes + '}';
+    }
+
+    @Override
+    //comparing the name with 
+    public int compareTo(Contacts o) {
+    return this.name.compareTo(o.name);
+
+        }
+
   
-}
+
+    public void setContactEvent(LinkedList<Event> ContactEvent) {
+        this.ContactEvent = ContactEvent;
+    }
