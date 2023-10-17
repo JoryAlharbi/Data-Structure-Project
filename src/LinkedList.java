@@ -1,4 +1,6 @@
 
+package ds.project;
+
 public class LinkedList <T>{
     
     private Node <T> head ; 
@@ -81,14 +83,13 @@ public class LinkedList <T>{
         }
         
         else {
-            temp.next= current.next ;
+            temp.next= current.next;
             current.next=temp ; 
             current= temp ;
         }
         
     }
-
-     
+    
     public void InsertFirst(T data){
         Node <T> temp=new Node <T> (data); 
         
@@ -102,5 +103,11 @@ public class LinkedList <T>{
             head=temp;
             current=temp;
         }
+        
+    }
             
 }
+            
+         
+   
+
