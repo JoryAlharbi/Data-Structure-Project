@@ -83,7 +83,9 @@ public class App {
            
            break; 
            
-          case 3:  
+          case 3: 
+              System.out.print("Enter the name of the contact you want to delete: ");
+              
             break;
               
           case 4: 
@@ -99,12 +101,25 @@ public class App {
             // then event added successfuly after sending to the add event method
             
             break; 
+            
           case 5:  
-            System.out.println("Enter search criteria: \n 1.Contact name \n 2. Event title ");
+            System.out.println("Enter search criteria: \n 1.Contact name \n 2. Event title "); // user need to choose what do they want to base their search on 
             eventCriteria = input.nextInt();
             
-            
-            
+          if (eventCriteria == 1 ) // search based on contact name
+          { System.out.print("Enter contact name:");
+          String cName = input.nextLine();         
+          if(! searchEvent(cName,eventCriteria));
+             System.out.print("Could not find any events scheduled with this contact");
+          }      // end if
+         
+          if (eventCriteria == 2 ) // search based on event title
+          {    System.out.print("Enter the title of your event: ");
+           String eTitle = input.nextLine();
+             if(! searchEvent(eTitle,eventCriteria));
+             System.out.print("Could not find this event ");
+          }      // end if
+        
             break;
               
           case 6: 
@@ -112,9 +127,8 @@ public class App {
               String firstName = input.nextLine();
                  phonebook.printallContacts_ByFisrtName(firstName); 
                       break;
-                      
           case 7: 
-              phonebook.printallContacts_ByFisrtName();
+          .
        break;
             
             
@@ -127,5 +141,8 @@ public class App {
         
     } while (userChoice != 8);
     
+    
         
-    }}
+        
+    }
+}
