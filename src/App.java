@@ -61,23 +61,28 @@ public class App {
                
                case 1:
                    String searchName = input.nextLine();
-                   phonebook.search(searchName, contactCriteria);
+                   if (! phonebook.search(searchName, contactCriteria)) 
+                       System.out.println("Contact not found");
                    break;
                case 2:
                    String searchPhoneNum = input.nextLine();
-                   phonebook.search(searchPhoneNum, contactCriteria);
+                  if (!phonebook.search(searchPhoneNum, contactCriteria))
+                            System.out.println("Contact not found");
                    break;
                case 3: 
                    String searchEmailAddress = input.nextLine();
-                   phonebook.search(searchEmailAddress, contactCriteria);
+                 if (!phonebook.search(searchEmailAddress, contactCriteria))
+                           System.out.println("Contact not found");
                    break;
                case 4:
                    String searchAddress = input.nextLine();
-                   phonebook.search(searchAddress, contactCriteria);
+                   if (!phonebook.search(searchAddress, contactCriteria))
+                             System.out.println("Contact not found");
                    break;
                case 5: 
                    String searchBirthday = input.nextLine();
-                   phonebook.search(searchBirthday, contactCriteria);
+                  if (!phonebook.search(searchBirthday, contactCriteria))
+                            System.out.println("Contact not found");
                    break;
            }
            
