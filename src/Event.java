@@ -1,3 +1,4 @@
+
 public class Event implements Comparable<Event> {
     private String title;
     private String timeAndDate;
@@ -5,11 +6,11 @@ public class Event implements Comparable<Event> {
     private String contactName ;
     
 
-    public Event(String title, String TimeAndDate, String location, String name) {
+    public Event(String title, String TimeAndDate, String location, String contactName) {
         this.title = title;
         this.timeAndDate= TimeAndDate;
         this.location = location;
-        this.name = name;
+        this.contactName = contactName;
     }
     
   public  void setTitle ( String title) {
@@ -42,23 +43,27 @@ return location ;
     }
 
     public String getName() {
-        return name;
+        return contactName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.contactName = name;
     }
 
-    //comparing the name with 
-    public int compareTo (Event o) {
-    return this.name.compareTo(o.name);
+    //comparing the name to sort the event list alphabticaly
+    public int compareTo(Event o) {
+    return this.contactName.compareTo(o.contactName);
+    
 
         }
-
-        public int compareToConflict(Event o) {
-    return this.timeAndDate.compareTo(o.timeAndDate);
+    // comparing the time and date so we dont have conflict
+    
+    public int compareToConflict(Event o) {
+    return this.timeAndDate.compareTo(o.getTimeAndDate());
+    
 
         }
     
+    
 }
-
+    
