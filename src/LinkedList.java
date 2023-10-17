@@ -87,5 +87,20 @@ public class LinkedList <T>{
         }
         
     }
+
+     
+    public void InsertFirst(T data){
+        Node <T> temp=new Node <T> (data); 
+        
+        if (head==null){
+            head=temp ; 
+            current=head ;
+        }
+        
+        else { 
+            temp.next=head;
+            head=temp;
+            current=temp;
+        }
             
 }
