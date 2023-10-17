@@ -50,9 +50,9 @@ return location ;
         this.contactName = name;
     }
 
-    //comparing the name to sort the event list alphabticaly
+    //comparing the title to sort the event list alphabticaly
     public int compareTo(Event o) {
-    return this.contactName.compareTo(o.contactName);
+    return this.title.compareTo(o.getTitle());
     
 
         }
@@ -67,3 +67,4 @@ return location ;
     
 }
     
+   
