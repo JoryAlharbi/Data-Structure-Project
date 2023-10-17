@@ -26,6 +26,10 @@ this.title = title;
 this.location = location;
   }
 
+     public  void setName ( String name) {
+this.name = name;
+  }
+
 public String getTitle () {
 
 return title ;
@@ -47,6 +51,9 @@ return location ;
     }
 
     
+     public String getName() {
+        return name;
+    }
     
     public LinkedList<Event> getEventList() {
         return eventList;
@@ -57,6 +64,5 @@ return location ;
         return event_ContactsList;
     }
 
-   
 }
     
