@@ -114,28 +114,17 @@ public class App {
                       
           case 7: 
               phonebook.printallContacts_ByFisrtName();
-          case 8: break;
-        
+       break;
             
             
         }
         
         
-        
-        
+                 System.out.print("Enter your choice:");
+                 userChoice = input.nextInt();
         
         
     } while (userChoice != 8);
     
-    
         
-      
-    
-    
-    
-    
-    
-        
-        
-    }
-}
+    }}
