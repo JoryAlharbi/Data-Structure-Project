@@ -203,28 +203,7 @@ public class PhoneBook  {
        return found ;
 
  }
-  
-  /* 
- public void printallContacts(LinkedList <Contacts> L2){
-   
-     if(L2.isEmpty())
-         System.out.println("the phonebook is empty");
-     else{
-     L2.FindFirst(); 
-     
-     while(!L2.Last()){
-         
-       L2.Retrive().
-         System.out.println("-----------------------");
-         L1.FindNext(); 
-     }//while
-     
-     L1.Retrive().display();
-     
- }//else
-     
- }
-*/
+
  public void printallContacts_ByFisrtName(String name){
    
      if(contactList.isEmpty())
@@ -245,7 +224,30 @@ public class PhoneBook  {
       contactList.Retrive().toString();
 
      }
+     // printing all the event alphabaticaly , the event list is already sorted we just print it 
      
+       public void PrintEvent(){
+   
+     if(event_ContactsList.isEmpty())
+         System.out.println("the event list is empty");
+     
+     else{
+     event_ContactsList.FindFirst(); 
+     
+     while(!event_ContactsList.Last()){
+    
+             event_ContactsList.Retrive().toString();
+     
+         System.out.println("-----------------------");
+         event_ContactsList.FindNext(); 
+     }//while
+     
+      event_ContactsList.Retrive().toString();
+
+     }
+     
+ 
+ }
  
  }
  
