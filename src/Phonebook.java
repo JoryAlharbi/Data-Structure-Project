@@ -94,7 +94,7 @@ public class PhoneBook  {
  
            }
            
-    // delete:
+   // delete:
   public void delete( String ContactName){
       //for the massege 
       boolean msgC= false;
@@ -102,7 +102,7 @@ public class PhoneBook  {
       contactList.FindFirst();
       while(contactList.Last()){
           if(contactList.Retrive().getName().equals(ContactName)){
-              contactList.Remove(contactList.retrive());
+              contactList.Remove();
               msgC= true;
           }
           else{
@@ -115,19 +115,19 @@ public class PhoneBook  {
       event_ContactsList.FindFirst();
       while(event_ContactsList.Last()){
           if(event_ContactsList.Retrive().getContactName().equals(ContactName)){
-           event_ContactsList.Remove(event_ContactsList.Retrive());     
+           event_ContactsList.Remove();     
           } 
           else
               event_ContactsList.FindNext();
       }
-      }
+      } 
       
       if(msgC) 
           System.out.println("Contact with" + ContactName + "name is deleted successfuly , as well as all their related events if there is any");
       else
-          System.out.println("there is no" + ContactName + "Contact to delete");
-  }     
-        
+          System.out.println("there is no" + ContactName + "Contact to delete");    
+      
+  }    
   
    //search: 
   public LinkedList<Contacts> search(String n, int type){
