@@ -2,7 +2,7 @@
 package ds.project;
 
 
-public class PhoneBook  {
+public class Phonebook  {
     
    public LinkedList<Contacts> contactList= new LinkedList<Contacts>();
     public  LinkedList<Event> event_ContactsList = new LinkedList<Event> () ;
@@ -342,8 +342,34 @@ public class PhoneBook  {
      
  
  }
-  //this method is for printing a list we recive from the search in the event list 
+    //PRINT ALL CONTACTS 
+
      
+     public void PrintContact(){
+   
+     if(contactList.isEmpty())
+         System.out.println("the contact list is empty");
+     
+     else{
+     contactList.FindFirst(); 
+     
+     while(!contactList.Last()){
+    
+             contactList.Retrive().toString();
+     
+         System.out.println("-----------------------");
+         contactList.FindNext(); 
+     }//while
+     
+      contactList.Retrive().toString();
+
+     }
+     
+ 
+ }
+     
+     //this method is for printing a list we recive from the search in the event list 
+
      public void PrintEvent(LinkedList<Event> EventSearchList){
    
      if(EventSearchList.isEmpty())
