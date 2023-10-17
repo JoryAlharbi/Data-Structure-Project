@@ -50,8 +50,13 @@ return location ;
     }
 
     //comparing the name with 
-    public int compareTo(Event o) {
+    public int compareTo (Event o) {
     return this.name.compareTo(o.name);
+
+        }
+
+        public int compareTo(Event o) {
+    return this.timeAndDate.compareTo(o.timeAndDate);
 
         }
     
