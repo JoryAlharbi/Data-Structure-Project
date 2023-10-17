@@ -110,7 +110,8 @@ public class App {
           case 6: 
               System.out.print("Enter the first name: ");
               String firstName = input.nextLine();
-                 phonebook.printallContacts_ByFisrtName(); // wrong because first name supposed to receive the first name
+                 phonebook.printallContacts_ByFisrtName(firstName); 
+                      break;
                       
           case 7: 
               phonebook.printallContacts_ByFisrtName();
