@@ -57,7 +57,7 @@ public class App {
               
               contactCriteria = input.nextInt(); // user choice 
               
-           switch (contactCriteria) { // ask rawan about the return statement !!!!
+           switch (contactCriteria) { 
                
                case 1:
                    String searchName = input.nextLine();
@@ -85,20 +85,30 @@ public class App {
            
           case 3: 
               System.out.print("Enter the name of the contact you want to delete: ");
+              String nameToDelete = input.nextLine();
+              
+              Delete(nameToDelete);
               
             break;
               
           case 4: 
             System.out.print("Enter event title: ");
             String eventTitle = input.nextLine();
-             System.out.print("Enter contact name: ");
+            System.out.print("Enter contact name: ");
             String contactName = input.nextLine();
              System.out.print("Enter event date and time (MM/DD/YYYY): ");
             String dateTime = input.nextLine();
              System.out.print("Enter event location: ");
             String eventLocation = input.nextLine();
+            System.out.print("Enter event location: ");
+            String eventLocation = input.nextLine();
+            
+          Event e = new Event(eventTitle, dateTime,eventLocation,contactName);
           
-            // then event added successfuly after sending to the add event method
+           if (AddEvent(e))
+               System.out.println("Event added successfully");
+           else 
+                System.out.println("There is a time conflict with other event! please choose another time");
             
             break; 
             
@@ -128,7 +138,8 @@ public class App {
                  phonebook.printallContacts_ByFisrtName(firstName); 
                       break;
           case 7: 
-          .
+          phonebook.PrintEvent();
+          
        break;
             
             
@@ -140,7 +151,6 @@ public class App {
         
         
     } while (userChoice != 8);
-    
     
         
         
