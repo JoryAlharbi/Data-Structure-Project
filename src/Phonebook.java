@@ -2,6 +2,7 @@
 package ds.project;
 
 
+
 public class Phonebook  {
     
    public LinkedList<Contacts> contactList= new LinkedList<Contacts>();
@@ -29,12 +30,11 @@ public class Phonebook  {
                    
                //case 2 : adding a contact with the smaller letter
                if (p.getName().compareTo(c.getName())== -1){
-                   contactList.Insert(c) ;
+                   contactList.InsertFirst(c) ;
                    added= true ;
                }
                //case 3 : adding a contact with the same or greater  
                  if (p.getName().compareTo(c.getName())== 1 ||p.getName().compareTo(c.getName())==0 ){
-                    contactList.FindNext(); 
                     contactList.Insert(c) ;
                     added= true ;
                }
@@ -74,17 +74,21 @@ public class Phonebook  {
                
                    
                //case 2 : adding a contact with the smaller letter
-               if (p.getName().compareTo(e.getName())== -1){
-                   event_ContactsList.Insert(e) ;
+                if ( p.compareToConflict(e )== -1 && p.getTitle().compareTo(e.getTitle())== -1){
+                   event_ContactsList.InsertFirst(e) ;
                    added= true ;
                }
                //case 3 : adding a contact with the same or greater  
-                 if (p.getName().compareTo(e.getName())== 1 ||p.getName().compareTo(e.getName())==0 ){
-                    event_ContactsList.FindNext(); 
+                if (p.getTitle().compareTo(e.getTitle())== 1 && p.compareToConflict(e )== 1 ){
                     event_ContactsList.Insert(e) ;
                     added= true ;
                }
-               
+                // there is time conflict
+                if ( p.compareToConflict(e )==0 && p.getTitle().compareTo(e.getTitle())== 0){
+                   
+                    added= false ;
+                    break;
+               }
                else
                    event_ContactsList.FindNext(); 
                  p=event_ContactsList.Retrive();
