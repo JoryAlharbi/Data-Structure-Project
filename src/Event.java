@@ -55,7 +55,7 @@ return location ;
 
         }
 
-        public int compareTo(Event o) {
+        public int compareToConflict(Event o) {
     return this.timeAndDate.compareTo(o.timeAndDate);
 
         }
