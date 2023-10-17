@@ -1,20 +1,15 @@
-public class Event {
+public class Event implements Comparable<Event> {
     private String title;
     private String timeAndDate;
     private String location;
-    private String name;
-    private Contacts contact;
+    private String name ;
     
-    public LinkedList<Event> eventList = new LinkedList<Event> ();
-    // need a display for all events
-    public LinkedList<Contacts> event_ContactsList = new LinkedList<Contacts> ();
 
-    public Event(String title, String TimeAndDate, String location, String name; Contacts contact) {
+    public Event(String title, String TimeAndDate, String location, String name) {
         this.title = title;
         this.timeAndDate= TimeAndDate;
         this.location = location;
         this.name = name;
-        this.contact = contact;
     }
     
   public  void setTitle ( String title) {
@@ -24,10 +19,6 @@ this.title = title;
 
  public  void setLocation ( String location) {
 this.location = location;
-  }
-
-     public  void setName ( String name) {
-this.name = name;
   }
 
 public String getTitle () {
@@ -50,19 +41,19 @@ return location ;
         return timeAndDate;
     }
 
-    
-     public String getName() {
+    public String getName() {
         return name;
     }
-    
-    public LinkedList<Event> getEventList() {
-        return eventList;
+
+    public void setName(String name) {
+        this.name = name;
     }
 
-    
-    public LinkedList<Contacts> getEvent_ContactsList() {
-        return event_ContactsList;
-    }
+    //comparing the name with 
+    public int compareTo(Event o) {
+    return this.name.compareTo(o.name);
 
+        }
+    
 }
-    
+
