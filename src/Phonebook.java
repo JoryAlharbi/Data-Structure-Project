@@ -6,6 +6,7 @@ public class PhoneBook  {
     
      LinkedList<Contacts> contactList= new LinkedList<>();
      LinkedList<Event> event_ContactsList = new LinkedList<Event> () ;
+    
        public boolean AddContact(Contacts c) {
            boolean added = false ; 
            
@@ -47,9 +48,10 @@ public class PhoneBook  {
           return added ;
        
        }
-       //////// adding an event 
-       /*
+
+//adding an event that  ensures an event with the same title is not added
  public boolean AddEvent(Event e) {
+     
            boolean added = false ; 
            
            //case 1 : empty list
@@ -60,38 +62,38 @@ public class PhoneBook  {
            } 
            
             event_ContactsList.FindFirst(); 
+            
            Event p =event_ContactsList.Retrive() ; //a pointer to go through the list 
-           /*
-           while (!L1.Last()){
-               // must insure that the contact is unique before adding
-               if (p.getName().equals(e.getName()) || p.getPhoneNum().equals(c.getPhoneNum())){
+           while (!event_ContactsList.Last()){
+               
+               // must ensure that the event is unique before adding
+               if (p.getTitle().equals(e.getTitle())){
                    added = false ;
-                   break ;
+                    break;
                }
+               
                    
                //case 2 : adding a contact with the smaller letter
-               if (p.getName().compareTo(c.getName())== -1){
-                   L1.Insert(c) ;
+               if (p.getName().compareTo(e.getName())== -1){
+                   event_ContactsList.Insert(e) ;
                    added= true ;
                }
                //case 3 : adding a contact with the same or greater  
-                 if (p.getName().compareTo(c.getName())== 1 ||p.getName().compareTo(c.getName())==0 ){
-                    L1.FindNext(); 
-                    L1.Insert(c) ;
+                 if (p.getName().compareTo(e.getName())== 1 ||p.getName().compareTo(e.getName())==0 ){
+                    event_ContactsList.FindNext(); 
+                    event_ContactsList.Insert(e) ;
                     added= true ;
                }
                
                else
-                   L1.FindNext(); 
-                 p=L1.Retrive();
-               
+                   event_ContactsList.FindNext(); 
+                 p=event_ContactsList.Retrive();
+           }
+                 
+                        return added ;
+ 
            }
            
-          return added ;
-       */
-       
-
-
         
         
     // delete:
