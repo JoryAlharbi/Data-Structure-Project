@@ -2,6 +2,7 @@ public class Event {
     private String title;
     private String timeAndDate;
     private String location;
+    private String name;
     private Contacts contact;
     
     public LinkedList<Event> eventList = new LinkedList<Event> ();
